@@ -40,11 +40,15 @@ module.exports = async (req, res) => {
   try {
     const { pathname } = new URL(req.url, `http://${req.headers.host}`);
 
-    // Health check
+    // Health check - root path
     if (pathname === '/' || pathname === '/api') {
       return res.status(200).json({
         message: 'Spire API Server is running!',
-        endpoint: '/api/employee - Get employees'
+        status: 'success',
+        endpoints: {
+          health: '/',
+          employees: '/api/employee'
+        }
       });
     }
 
@@ -56,7 +60,10 @@ module.exports = async (req, res) => {
     }
 
     // 404 for unknown routes
-    return res.status(404).json({ error: 'Endpoint not found' });
+    return res.status(404).json({ 
+      error: 'Endpoint not found',
+      available: ['/', '/api/employee']
+    });
 
   } catch (error) {
     console.error('Server error:', error.message);
