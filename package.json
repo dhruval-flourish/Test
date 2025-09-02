@@ -9,7 +9,7 @@
     "node": "22.x"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node test-spire.js",
     "dev": "vercel dev",
     "deploy": "vercel --prod"
   }

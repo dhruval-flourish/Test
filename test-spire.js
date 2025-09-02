@@ -1,12 +1,12 @@
 const axios = require('axios');
 
 // Simple configuration
-const BASE_URL = 'https://clean-invoice-3801.spirelan.com:10880/api/v2';
+const BASE_URL = 'https://blue-decimal-2893.spirelan.com:10880/api/v2';
 const COMPANY = 'inspirehealth'; // Replace with actual company
 
 // Basic Auth credentials
 const USERNAME = 'Dhruval';
-const PASSWORD = 'Dhruval123$%^';
+const PASSWORD = 'Dhruval@3006';
 const AUTH_TOKEN = 'Basic ' + Buffer.from(`${USERNAME}:${PASSWORD}`).toString('base64');
 
 // Simple request function
