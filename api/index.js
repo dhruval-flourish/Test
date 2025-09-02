@@ -11,6 +11,7 @@ const AUTH_TOKEN = 'Basic ' + Buffer.from(`${USERNAME}:${PASSWORD}`).toString('b
 async function makeSpireRequest(endpoint) {
   try {
     const url = `${BASE_URL}${endpoint}`;
+    console.log('Spire API Request:', url);
     const response = await axios.get(url, {
       headers: {
         'Authorization': AUTH_TOKEN,
@@ -20,6 +21,7 @@ async function makeSpireRequest(endpoint) {
     });
     return response.data;
   } catch (error) {
+    console.error('Spire API Error:', error.message);
     throw new Error(`Spire API Error: ${error.message}`);
   }
 }
@@ -38,10 +40,11 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { pathname } = new URL(req.url, `http://${req.headers.host}`);
+    // Get the path from the request
+    const path = req.url || '/';
 
     // Health check - root path
-    if (pathname === '/' || pathname === '/api') {
+    if (path === '/' || path === '/api') {
       return res.status(200).json({
         message: 'Spire API Server is running!',
         status: 'success',
@@ -53,7 +56,7 @@ module.exports = async (req, res) => {
     }
 
     // Get employees
-    if (pathname === '/api/employee') {
+    if (path === '/api/employee' || path.startsWith('/api/employee')) {
       const limit = req.query?.limit || 50;
       const data = await makeSpireRequest(`/companies/${COMPANY}/payroll/employees?limit=${limit}`);
       return res.status(200).json(data);
@@ -62,7 +65,8 @@ module.exports = async (req, res) => {
     // 404 for unknown routes
     return res.status(404).json({ 
       error: 'Endpoint not found',
-      available: ['/', '/api/employee']
+      available: ['/', '/api/employee'],
+      requested: path
     });
 
   } catch (error) {

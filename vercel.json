@@ -8,6 +8,10 @@
     {
       "src": "/",
       "dest": "/api"
+    },
+    {
+      "src": "/api/employee",
+      "dest": "/api"
     }
   ]
 }
