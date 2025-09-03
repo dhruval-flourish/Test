@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  spire-api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - SPIRE_BASE_URL=${SPIRE_BASE_URL:-https://blue-decimal-2893.spirelan.com:10880/api/v2}
+      - SPIRE_COMPANY=${SPIRE_COMPANY:-inspirehealth}
+      - SPIRE_USERNAME=${SPIRE_USERNAME:-Dhruval}
+      - SPIRE_PASSWORD=${SPIRE_PASSWORD:-Dhruval@3006}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

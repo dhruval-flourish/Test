@@ -40,11 +40,13 @@ async function makeSpireRequest(endpoint) {
 // Health check
 app.get('/', (req, res) => {
   res.json({ 
-    message: 'Spire API Server is running on Railway!',
+    message: 'Spire API Server is running on EC2!',
     status: 'success',
     endpoints: {
       health: '/',
       employees: '/api/employee',
+      jobs: '/api/jobs',
+      accounts: '/api/accounts',
       test: '/api/test'
     },
     config: {
@@ -61,7 +63,7 @@ app.get('/api/test', (req, res) => {
     message: 'Test endpoint working!',
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV || 'development',
-    platform: 'Railway'
+    platform: 'EC2'
   });
 });
 
@@ -108,7 +110,7 @@ app.get('/api/accounts', async (req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Spire API Server running on Railway - Port ${PORT}`);
+  console.log(`🚀 Spire API Server running on EC2 - Port ${PORT}`);
   console.log(`📋 Available endpoints:`);
   console.log(`   GET / - Health check`);
   console.log(`   GET /api/test - Test endpoint`);

@@ -13,6 +13,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "test": "node test-spire.js"
+    "test": "node test-spire.js",
+    "build": "echo 'No build step required for Node.js'",
+    "deploy": "echo 'Deploy to EC2 using your preferred method'"
   }
 }
