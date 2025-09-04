@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Spire API configuration - using environment variables
-const BASE_URL = process.env.SPIRE_BASE_URL || 'https://blue-decimal-2893.spirelan.com:10880/api/v2';
+const BASE_URL = process.env.SPIRE_BASE_URL || 'http://192.168.113.2:10880/api/v2';
 const COMPANY = process.env.SPIRE_COMPANY || 'inspirehealth';
 const USERNAME = process.env.SPIRE_USERNAME || 'Dhruval';
 const PASSWORD = process.env.SPIRE_PASSWORD || 'Dhruval@3006';
