@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Spire API configuration - using environment variables
-const BASE_URL = process.env.SPIRE_BASE_URL || 'https://8f20452e78b3.ngrok-free.app/api/v2';
+const BASE_URL = process.env.SPIRE_BASE_URL || 'https://431f77b5b0f6.ngrok-free.app/api/v2';
 const COMPANY = process.env.SPIRE_COMPANY || 'inspirehealth';
 const USERNAME = process.env.SPIRE_USERNAME || 'Dhruval';
 const PASSWORD = process.env.SPIRE_PASSWORD || 'Dhruval@3006';
