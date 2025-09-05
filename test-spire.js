@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 // Simple configuration
-const BASE_URL = 'https://blue-decimal-2893.spirelan.com:10880/api/v2';
+const BASE_URL = 'https://431f77b5b0f6.ngrok-free.app/api/v2';
 const COMPANY = 'inspirehealth'; // Replace with actual company
 
 // Basic Auth credentials
