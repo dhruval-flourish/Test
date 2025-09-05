@@ -67,7 +67,7 @@ chmod +x deploy.sh
 ```bash
 # Create .env file
 cat > .env << EOF
-SPIRE_BASE_URL=https://blue-decimal-2893.spirelan.com:10880/api/v2
+SPIRE_BASE_URL=https://431f77b5b0f6.ngrok-free.app/api/v2
 SPIRE_COMPANY=inspirehealth
 SPIRE_USERNAME=Dhruval
 SPIRE_PASSWORD=Dhruval@3006
